@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/com/* Main
+web: java $JAVA_OPTS -cp target/classes:target/com/* EretrowayApplication
