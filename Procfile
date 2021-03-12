@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/com/gally/eretroway EretrowayApplication
+web: java -jar target/eretroway-0.0.1-SNAPSHOT.jar
