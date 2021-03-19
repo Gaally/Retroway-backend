@@ -25,7 +25,7 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/products")
+    @GetMapping(path = "/products")
     public ResponseEntity<List<Product>> getAllProducts(@RequestParam(required = false) String model) {
         try {
             List<Product> products = new ArrayList<Product>();

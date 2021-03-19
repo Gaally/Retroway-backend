@@ -21,58 +21,61 @@ public class User {
     private Long id;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 2, max = 20)
     private String firstName;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 2, max = 20)
     private String lastName;
 
     @NotBlank
-    @Size(max = 20)
+    @Size(min = 3, max = 20)
     private String username;
 
     @NotBlank
-    @Size(max = 50)
+    @Size(min = 6, max = 50)
     @Email
     private String email;
 
     @NotBlank
-    @Size(max = 120)
+    @Size(min = 6, max = 120)
     private String password;
 
-    @Size(max = 120)
+    @Size(min = 10, max = 40)
     private String address;
 
-    @Size(max = 50)
+    @Size(min = 4, max = 40)
     private String city;
 
-    @Size(max = 50)
-    private String state;
+    @Size(min = 4, max = 40)
+    private String country;
 
-    @Size(max = 50)
+    @Size(min = 5, max = 40)
     private String postalCode;
-
 
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
-    joinColumns = @JoinColumn(name = "user_id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id"))
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     public User() {
 
     }
 
-    public User(String firstName, String lastName, String username, String email, String password) {
+    public User(String firstName, String lastName, String username, String email, String password, String address, String city, String country, String postalCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
-
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.postalCode = postalCode;
     }
+
 
     public Long getId() {
         return id;
@@ -122,14 +125,6 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -146,12 +141,12 @@ public class User {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getCountry() {
+        return country;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getPostalCode() {
@@ -160,5 +155,13 @@ public class User {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

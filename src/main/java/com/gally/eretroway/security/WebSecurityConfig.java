@@ -1,6 +1,6 @@
 package com.gally.eretroway.security;
 
-import com.gally.eretroway.models.ERole;
+
 import com.gally.eretroway.security.jwt.AuthEntryPointJwt;
 import com.gally.eretroway.security.jwt.AuthTokenFilter;
 import com.gally.eretroway.security.services.UserDetailsServiceImpl;
@@ -63,7 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/products/**").permitAll();
+                .antMatchers("/api/products/**").permitAll()
+                .antMatchers("/api/orders/**").permitAll();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

@@ -7,13 +7,12 @@ import java.util.Set;
 
 public class SignupRequest {
 
-
     @NotBlank
-    @Size(min = 3, max = 20)
+    @Size(min = 2, max = 20)
     private String firstName;
 
     @NotBlank
-    @Size(min = 3, max = 20)
+    @Size(min = 2, max = 20)
     private String lastName;
 
     @NotBlank
@@ -21,13 +20,27 @@ public class SignupRequest {
     private String username;
 
     @NotBlank
-    @Size(max = 50)
+    @Size(min = 6, max = 50)
     @Email
     private String email;
 
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    @Size(min = 10, max = 40)
+    private String address;
+
+    @Size(min = 4, max = 40)
+    private String city;
+
+    @Size(min = 4, max = 40)
+    private String country;
+
+    @Size(min = 5, max = 40)
+    private String postalCode;
+
+
 
     private Set<String> role;
 
@@ -69,6 +82,38 @@ public class SignupRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public Set<String> getRole() {
