@@ -63,7 +63,7 @@ public class OrderController {
     }
 
     @PostMapping(path = "/orders")
-    public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader (name="Authorization") String token) {
+    public ResponseEntity<Order> createOrder(@RequestBody Order order, @RequestHeader(name="Authorization") String token) {
         try {
             token = token.substring(7, token.length());
             String username = jwtUtils.getUserNameFromJwtToken(token);
@@ -71,7 +71,7 @@ public class OrderController {
                     .orElseThrow(() -> new RuntimeException("Error : User is not found"));
             Order new_order= new Order(
                     user,
-                    order.getOrdered(),
+                    order.getOrdered().now(),
                     order.getShipped(),
                     order.getShipTo(),
                     order.getTotalCost());

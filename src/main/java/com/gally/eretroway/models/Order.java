@@ -25,13 +25,14 @@ public class Order {
     private String shipTo;
 
     @Column(name = "total_cost")
-    private Double totalCost;
+    private int totalCost;
+
+    @ManyToOne
+    private Product product;
 
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Product product;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "status_order",
@@ -40,7 +41,7 @@ public class Order {
     private Set<Status> statuses = new HashSet<>();
 
 
-    public Order(User user, LocalDateTime ordered, LocalDateTime shipped, String shipTo, Double totalCost) {
+    public Order(User user, LocalDateTime ordered, LocalDateTime shipped, String shipTo, int totalCost) {
         this.user = user;
         this.ordered = ordered;
         this.shipped = shipped;
@@ -85,16 +86,16 @@ public class Order {
         this.shipTo = shipTo;
     }
 
-    public Double getTotalCost() {
+    public int getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(Double totalCost) {
+    public void setTotalCost(int totalCost) {
         this.totalCost = totalCost;
     }
 
 
-   public User getUser() {
+    public User getUser() {
         return user;
     }
 
@@ -110,13 +111,6 @@ public class Order {
         this.statuses = statuses;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
 
 

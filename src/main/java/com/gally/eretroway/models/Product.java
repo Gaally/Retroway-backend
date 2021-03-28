@@ -2,7 +2,6 @@ package com.gally.eretroway.models;
 
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
@@ -24,13 +23,13 @@ public class Product {
     private int stockQuantity;
 
     @Column(name = "price")
-    private BigDecimal price;
+    private int price;
 
     @Column(name = "featured")
     private boolean featured;
 
 
-    public Product(String model, String description, String imageUrl, int stockQuantity, BigDecimal price, boolean featured) {
+    public Product(String model, String description, String imageUrl, int stockQuantity, int price, boolean featured) {
         this.id = id;
         this.model = model;
         this.description = description;
@@ -84,11 +83,11 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

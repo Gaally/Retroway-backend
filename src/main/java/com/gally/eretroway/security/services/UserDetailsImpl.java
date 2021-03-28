@@ -22,15 +22,35 @@ public class UserDetailsImpl implements UserDetails {
 
     private String email;
 
+    private String firstName;
+
+    private String lastName;
+
+    private String address;
+
+    private String city;
+
+    private String country;
+
+    private String postalCode;
+
     @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(Long id, String username, String email, String firstName, String lastName,
+                           String address, String city, String country, String postalCode,
+                           String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.postalCode = postalCode;
         this.password = password;
         this.authorities = authorities;
     }
@@ -44,6 +64,12 @@ public class UserDetailsImpl implements UserDetails {
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getAddress(),
+                user.getCity(),
+                user.getCountry(),
+                user.getPostalCode(),
                 user.getPassword(),
                 authorities);
     }
@@ -59,6 +85,29 @@ public class UserDetailsImpl implements UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+    public String getCity() {
+        return city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
     }
 
     @Override
